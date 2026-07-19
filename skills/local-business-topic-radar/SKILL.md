@@ -1,85 +1,46 @@
 ---
 name: local-business-topic-radar
-description: [TODO: Complete and informative explanation of what the skill does and when to use it. Include WHEN to use this skill - specific scenarios, file types, or tasks that trigger it.]
+description: Use when a user needs current local content topics for a city-based business, including local events, city news, policy changes, consumer concerns, seasonal opportunities, or industry trends that must be verified, scored, and converted into structured topic cards.
 ---
 
 # Local Business Topic Radar
 
-## Overview
+## Purpose
 
-[TODO: 1-2 sentences explaining what this skill enables]
+Find ten timely, verifiable topics that local customers care about and that connect naturally to the merchant's industry. Stop at topic cards; do not write full articles.
 
-## Structuring This Skill
+## Required input
 
-[TODO: Choose the structure that best fits this skill's purpose. Common patterns:
+Read a Business Profile v1. If it is unavailable, ask only for city, district, industry, business name, target customers, products or services, business strengths, content goal, conversion action, and forbidden claims. Never invent missing merchant facts.
 
-**1. Workflow-Based** (best for sequential processes)
-- Works well when there are clear step-by-step procedures
-- Example: DOCX skill with "Workflow Decision Tree" -> "Reading" -> "Creating" -> "Editing"
-- Structure: ## Overview -> ## Workflow Decision Tree -> ## Step 1 -> ## Step 2...
+Read `references/business-profile-contract.md` when validating or creating a profile.
 
-**2. Task-Based** (best for tool collections)
-- Works well when the skill offers different operations/capabilities
-- Example: PDF skill with "Quick Start" -> "Merge PDFs" -> "Split PDFs" -> "Extract Text"
-- Structure: ## Overview -> ## Quick Start -> ## Task Category 1 -> ## Task Category 2...
+## Research workflow
 
-**3. Reference/Guidelines** (best for standards or specifications)
-- Works well for brand guidelines, coding standards, or requirements
-- Example: Brand styling with "Brand Guidelines" -> "Colors" -> "Typography" -> "Features"
-- Structure: ## Overview -> ## Guidelines -> ## Specifications -> ## Usage...
+1. Establish today's date and the requested time window.
+2. Scan local official sources, local media and life signals, platform discussions, then national industry signals with a provable local bridge.
+3. Use Agent Reach when installed. Otherwise use the runtime's current web-search tools.
+4. Keep source title, URL, and publication date. Require a primary source for policy, regulation, price, admissions, medical, and financial claims.
+5. Reject unverified claims and unrelated traffic before scoring.
 
-**4. Capabilities-Based** (best for integrated systems)
-- Works well when the skill provides multiple interrelated features
-- Example: Product Management with "Core Capabilities" -> numbered capability list
-- Structure: ## Overview -> ## Core Capabilities -> ### 1. Feature -> ### 2. Feature...
+Read `references/source-strategy.md` for source selection and `references/compliance-rules.md` for regulated claims.
 
-Patterns can be mixed and matched as needed. Most skills combine patterns (e.g., start with task-based, add workflow for complex operations).
+## Rank and select
 
-Delete this entire "Structuring This Skill" section when done - it's just guidance.]
+Score every surviving candidate with `references/scoring-model.md`. Exclude totals below 70. Prefer useful local demand over raw national popularity. Do not force a merchant connection.
 
-## [TODO: Replace with the first main section based on chosen structure]
+## Output contract
 
-[TODO: Add content here. See examples in existing skills:
-- Code samples for technical skills
-- Decision trees for complex workflows
-- Concrete examples with realistic user requests
-- References to scripts/templates/references as needed]
+Return exactly ten ranked Topic Card Contract v1 cards using `references/output-template.md`. Each card must include dated sources, local relevance, customer pain, a natural business connection, keywords, writing angle, CTA, validity window, score breakdown, and risk notes.
 
-## Resources (optional)
+Read `references/topic-card-contract.md` before emitting or validating cards.
 
-Create only the resource directories this skill actually needs. Delete this section if no resources are required.
+## Stop conditions
 
-### scripts/
-Executable code (Python/Bash/etc.) that can be run directly to perform specific operations.
+- Missing merchant facts: ask only for the missing required fields.
+- Insufficient evidence: mark the candidate as failing the fact threshold and exclude it.
+- Expired event: refresh it or replace it.
+- Forced business connection: reject it.
+- Fewer than ten qualified candidates: report the actual qualified count instead of padding with weak topics.
 
-**Examples from other skills:**
-- PDF skill: `fill_fillable_fields.py`, `extract_form_field_info.py` - utilities for PDF manipulation
-- DOCX skill: `document.py`, `utilities.py` - Python modules for document processing
-
-**Appropriate for:** Python scripts, shell scripts, or any executable code that performs automation, data processing, or specific operations.
-
-**Note:** Scripts may be executed without loading into context, but can still be read by Codex for patching or environment adjustments.
-
-### references/
-Documentation and reference material intended to be loaded into context to inform Codex's process and thinking.
-
-**Examples from other skills:**
-- Product management: `communication.md`, `context_building.md` - detailed workflow guides
-- BigQuery: API reference documentation and query examples
-- Finance: Schema documentation, company policies
-
-**Appropriate for:** In-depth documentation, API references, database schemas, comprehensive guides, or any detailed information that Codex should reference while working.
-
-### assets/
-Files not intended to be loaded into context, but rather used within the output Codex produces.
-
-**Examples from other skills:**
-- Brand styling: PowerPoint template files (.pptx), logo files
-- Frontend builder: HTML/React boilerplate project directories
-- Typography: Font files (.ttf, .woff2)
-
-**Appropriate for:** Templates, boilerplate code, document templates, images, icons, fonts, or any files meant to be copied or used in the final output.
-
----
-
-**Not every skill requires all three types of resources.**
+After selection, tell the user that any card can be passed to `local-business-article-writer`, while keeping this Skill independently usable.
