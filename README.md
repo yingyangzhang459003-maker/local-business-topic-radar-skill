@@ -33,7 +33,7 @@ Copy-Item -Recurse .\skills\local-business-topic-radar "$HOME\.codex\skills\loca
 ```powershell
 py -3 -m unittest discover -s tests -v
 py -3 scripts/validate_contract.py
-py -3 'C:\Users\张yingyang\.codex\skills\.system\skill-creator\scripts\quick_validate.py' 'skills\local-business-topic-radar'
+py -3 "$HOME\.codex\skills\.system\skill-creator\scripts\quick_validate.py" 'skills\local-business-topic-radar'
 ```
 
 ## Handoff
