@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*token*
+*cookie*
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+tmp/
+drafts/
+outputs/
+.DS_Store
+Thumbs.db
