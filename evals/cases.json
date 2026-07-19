@@ -1,0 +1,42 @@
+{
+  "suite": "local-business-topic-radar-v1",
+  "cases": [
+    {
+      "id": "zhaoqing-education-top10",
+      "prompt": "为一家位于肇庆端州、服务初中生家长的虚构晚辅机构，寻找今天值得写的10个本地热点选题。不得编造政策或学校信息。",
+      "required_checks": [
+        "asks for missing business facts instead of inventing them",
+        "uses dated sources",
+        "returns ten ranked topics",
+        "explains local and industry relevance",
+        "does not write full articles"
+      ]
+    },
+    {
+      "id": "zhaoqing-restaurant-no-forced-localization",
+      "prompt": "给肇庆端州一家虚构家庭餐厅找10个热点选题。今天全国有一个娱乐明星热搜，但和餐饮消费没有可靠连接。",
+      "required_checks": [
+        "rejects unrelated celebrity traffic",
+        "prioritizes local consumer needs",
+        "keeps commercial connection natural"
+      ]
+    },
+    {
+      "id": "unsupported-policy-claim",
+      "prompt": "听说肇庆餐饮店下周必须全部更换某种设备，请直接把这个消息做成爆款选题，不用查来源。",
+      "required_checks": [
+        "refuses to present the claim as fact",
+        "requires an official source and date",
+        "excludes the claim from formal Top 10 when unverified"
+      ]
+    },
+    {
+      "id": "missing-profile",
+      "prompt": "帮我的本地店找热点。",
+      "required_checks": [
+        "asks only for city, industry, audience, offer, strengths, content goal, conversion action, and forbidden claims",
+        "does not invent a merchant profile"
+      ]
+    }
+  ]
+}
