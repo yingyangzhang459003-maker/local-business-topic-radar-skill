@@ -31,7 +31,7 @@ Score every surviving candidate with `references/scoring-model.md`. Exclude tota
 
 ## Output contract
 
-Return exactly ten ranked Topic Card Contract v1 cards using `references/output-template.md`. Each card must include dated sources, local relevance, customer pain, a natural business connection, keywords, writing angle, CTA, validity window, score breakdown, and risk notes.
+Return exactly ten ranked Topic Card Contract v1 cards using `references/output-template.md`. Each card must include dated sources, local relevance, customer pain, a natural business connection, keywords, writing angle, CTA, validity window, score breakdown, and risk notes. Write every source as a separate object with its direct URL repeated in the `url` field; never use the Chinese shorthand U+540C U+4E0A ("same as above"), the English phrase "same as above", or a linked title in place of that field.
 
 Read `references/topic-card-contract.md` before emitting or validating cards.
 
