@@ -1,0 +1,35 @@
+{
+  "contract_version": "1.0",
+  "topic_id": "zhaoqing-restaurant-20260716-01",
+  "generated_at": "2026-07-16",
+  "city": "肇庆",
+  "district": "端州",
+  "industry": "家庭餐饮",
+  "title": "肇庆暑期夜间活动增多，家庭聚餐选店先看这三项",
+  "hot_event": "肇庆公布暑期夜间文旅活动安排",
+  "sources": [{
+    "title": "肇庆暑期夜间文旅活动安排（示例）",
+    "url": "https://example.com/zhaoqing-night-events",
+    "published_at": "2026-07-16"
+  }],
+  "why_local_people_care": "夜间出行和家庭聚餐需求在活动期间增加",
+  "target_customer": "端州家庭聚餐顾客",
+  "customer_pain_point": "活动期间选店容易只看距离，忽略食材、等位和儿童需求",
+  "business_connection": "餐厅可公开选店判断标准和自身服务流程",
+  "search_keywords": ["肇庆家庭聚餐", "端州夜间活动", "端州餐厅"],
+  "writing_angle": "以活动后的家庭聚餐决策清单切入",
+  "recommended_cta": "收藏清单并提前预约",
+  "valid_until": "2026-07-23",
+  "score": {
+    "local_relevance": 19,
+    "industry_relevance": 18,
+    "timeliness": 13,
+    "customer_demand": 13,
+    "search_value": 8,
+    "conversion_value": 8,
+    "source_reliability": 5,
+    "compliance_safety": 5,
+    "total": 89
+  },
+  "risk_notes": ["活动与餐厅均为虚构示例，不得当作真实经营信息发布"]
+}

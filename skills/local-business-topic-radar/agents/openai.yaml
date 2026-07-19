@@ -1,0 +1,4 @@
+interface:
+  display_name: "Local Business Topic Radar"
+  short_description: "Help with Local Business Topic Radar tasks"
+  default_prompt: "Use $local-business-topic-radar to find ten verified local content opportunities for my business."

@@ -1,0 +1,13 @@
+{
+  "profile_version": "1.0",
+  "city": "肇庆",
+  "district": "端州",
+  "industry": "教育培训",
+  "business_name": "端州成长学习中心（虚构示例）",
+  "target_customers": "初中生家长",
+  "products_services": ["初中晚辅", "数学与英语学习支持"],
+  "business_strengths": ["本地校区", "过程记录", "学习规划"],
+  "content_goal": "建立本地家长信任并促进咨询",
+  "conversion_action": "预约到店咨询",
+  "forbidden_claims": ["保证提分", "包过", "速成"]
+}

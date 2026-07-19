@@ -1,0 +1,35 @@
+{
+  "contract_version": "1.0",
+  "topic_id": "zhaoqing-education-20260716-01",
+  "generated_at": "2026-07-16",
+  "city": "肇庆",
+  "district": "端州",
+  "industry": "教育培训",
+  "title": "肇庆暑期公共活动增加，初中家庭如何安排学习节奏",
+  "hot_event": "肇庆公布暑期公共文化活动安排",
+  "sources": [{
+    "title": "肇庆暑期公共文化活动安排（示例）",
+    "url": "https://example.com/zhaoqing-summer",
+    "published_at": "2026-07-16"
+  }],
+  "why_local_people_care": "家庭需要协调活动、出行与学习安排",
+  "target_customer": "肇庆初中生家长",
+  "customer_pain_point": "暑期安排容易失衡",
+  "business_connection": "机构可提供时间规划方法，不承诺效果",
+  "search_keywords": ["肇庆暑期活动", "初中暑假规划"],
+  "writing_angle": "从家庭时间管理切入",
+  "recommended_cta": "收藏规划清单",
+  "valid_until": "2026-07-23",
+  "score": {
+    "local_relevance": 18,
+    "industry_relevance": 18,
+    "timeliness": 13,
+    "customer_demand": 12,
+    "search_value": 8,
+    "conversion_value": 8,
+    "source_reliability": 5,
+    "compliance_safety": 5,
+    "total": 87
+  },
+  "risk_notes": []
+}

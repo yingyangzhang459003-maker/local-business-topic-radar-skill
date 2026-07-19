@@ -1,0 +1,13 @@
+{
+  "profile_version": "1.0",
+  "city": "肇庆",
+  "district": "端州",
+  "industry": "家庭餐饮",
+  "business_name": "端州邻里家常菜馆（虚构示例）",
+  "target_customers": "端州家庭聚餐与周末到店顾客",
+  "products_services": ["家庭聚餐", "本地时令菜"],
+  "business_strengths": ["公开食材来源", "明厨流程", "适合家庭聚餐"],
+  "content_goal": "提升本地搜索曝光并建立食品安全信任",
+  "conversion_action": "预约到店用餐",
+  "forbidden_claims": ["绝对安全", "零添加", "治疗功效"]
+}
