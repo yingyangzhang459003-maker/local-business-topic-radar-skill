@@ -1,6 +1,9 @@
 import importlib.util
+import json
 import pathlib
+import tempfile
 import unittest
+from urllib.parse import urlsplit
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -79,6 +82,35 @@ class BusinessProfileTests(unittest.TestCase):
         profile["profile_version"] = "2.0"
         self.assertIn("profile_version must be 1.0", validator.validate_business_profile(profile))
 
+    def test_top_level_value_must_be_an_object(self):
+        self.assertEqual(
+            validator.validate_business_profile([]),
+            ["business profile must be an object"],
+        )
+
+    def test_required_string_must_not_be_empty(self):
+        profile = valid_profile()
+        profile["city"] = "   "
+        self.assertIn(
+            "city must be a non-empty string",
+            validator.validate_business_profile(profile),
+        )
+
+    def test_array_field_must_be_a_list(self):
+        profile = valid_profile()
+        profile["products_services"] = "初中晚辅"
+        self.assertIn(
+            "products_services must be a list",
+            validator.validate_business_profile(profile),
+        )
+
+    def test_array_elements_must_be_non_empty_strings(self):
+        profile = valid_profile()
+        profile["business_strengths"] = ["本地校区", 123, ""]
+        errors = validator.validate_business_profile(profile)
+        self.assertIn("business_strengths[1] must be a non-empty string", errors)
+        self.assertIn("business_strengths[2] must be a non-empty string", errors)
+
 
 class TopicCardTests(unittest.TestCase):
     def test_valid_topic_card_has_no_errors(self):
@@ -108,6 +140,160 @@ class TopicCardTests(unittest.TestCase):
             "score.local_relevance must be between 0 and 20",
             validator.validate_topic_card(card)
         )
+
+    def test_top_level_value_must_be_an_object(self):
+        self.assertEqual(
+            validator.validate_topic_card("not an object"),
+            ["topic card must be an object"],
+        )
+
+    def test_required_string_must_not_be_empty(self):
+        card = valid_topic_card()
+        card["title"] = ""
+        self.assertIn(
+            "title must be a non-empty string",
+            validator.validate_topic_card(card),
+        )
+
+    def test_generated_at_must_be_a_valid_iso_calendar_date(self):
+        card = valid_topic_card()
+        card["generated_at"] = "2026-02-30"
+        self.assertIn(
+            "generated_at must be a valid ISO date YYYY-MM-DD",
+            validator.validate_topic_card(card),
+        )
+
+    def test_valid_until_must_use_exact_iso_date_format(self):
+        card = valid_topic_card()
+        card["valid_until"] = "2026-7-23"
+        self.assertIn(
+            "valid_until must be a valid ISO date YYYY-MM-DD",
+            validator.validate_topic_card(card),
+        )
+
+    def test_topic_array_field_must_be_a_list(self):
+        card = valid_topic_card()
+        card["search_keywords"] = "肇庆暑期活动"
+        self.assertIn(
+            "search_keywords must be a list",
+            validator.validate_topic_card(card),
+        )
+
+    def test_topic_array_elements_must_be_non_empty_strings(self):
+        card = valid_topic_card()
+        card["risk_notes"] = [False, ""]
+        errors = validator.validate_topic_card(card)
+        self.assertIn("risk_notes[0] must be a non-empty string", errors)
+        self.assertIn("risk_notes[1] must be a non-empty string", errors)
+
+    def test_source_must_be_an_object(self):
+        card = valid_topic_card()
+        card["sources"] = [42]
+        self.assertIn(
+            "sources[0] must be an object",
+            validator.validate_topic_card(card),
+        )
+
+    def test_source_title_must_not_be_empty(self):
+        card = valid_topic_card()
+        card["sources"][0]["title"] = "   "
+        self.assertIn(
+            "sources[0].title must be a non-empty string",
+            validator.validate_topic_card(card),
+        )
+
+    def test_source_url_must_be_a_full_direct_http_url(self):
+        for value in (
+            "同上",
+            "same as above",
+            "/local/path",
+            "ftp://example.com/item",
+            "https://[",
+        ):
+            with self.subTest(value=value):
+                card = valid_topic_card()
+                card["sources"][0]["url"] = value
+                self.assertIn(
+                    "sources[0].url must be a full direct http(s) URL",
+                    validator.validate_topic_card(card),
+                )
+
+    def test_source_date_must_be_a_valid_iso_calendar_date(self):
+        card = valid_topic_card()
+        card["sources"][0]["published_at"] = "2025-13-01"
+        self.assertIn(
+            "sources[0].published_at must be a valid ISO date YYYY-MM-DD",
+            validator.validate_topic_card(card),
+        )
+
+    def test_score_must_be_an_object(self):
+        card = valid_topic_card()
+        card["score"] = []
+        self.assertIn("score must be an object", validator.validate_topic_card(card))
+
+    def test_every_score_field_must_be_present(self):
+        card = valid_topic_card()
+        del card["score"]["search_value"]
+        self.assertIn(
+            "score missing field: search_value",
+            validator.validate_topic_card(card),
+        )
+
+    def test_score_components_must_be_integers_and_bool_is_invalid(self):
+        card = valid_topic_card()
+        card["score"]["timeliness"] = True
+        self.assertIn(
+            "score.timeliness must be an integer",
+            validator.validate_topic_card(card),
+        )
+
+    def test_valid_integer_components_are_bounds_checked_independently(self):
+        card = valid_topic_card()
+        card["score"]["local_relevance"] = 21
+        card["score"]["timeliness"] = "current"
+        errors = validator.validate_topic_card(card)
+        self.assertIn("score.local_relevance must be between 0 and 20", errors)
+        self.assertIn("score.timeliness must be an integer", errors)
+
+    def test_score_total_must_be_an_integer_and_bool_is_invalid(self):
+        card = valid_topic_card()
+        card["score"]["total"] = True
+        self.assertIn(
+            "score.total must be an integer",
+            validator.validate_topic_card(card),
+        )
+
+    def test_malformed_nested_values_return_errors_instead_of_raising(self):
+        card = valid_topic_card()
+        card["sources"] = [None, {"title": [], "url": {}, "published_at": False}]
+        card["score"] = {"local_relevance": "high"}
+        errors = validator.validate_topic_card(card)
+        self.assertIn("sources[0] must be an object", errors)
+        self.assertIn("score.local_relevance must be an integer", errors)
+
+
+class FileValidationTests(unittest.TestCase):
+    def test_malformed_json_returns_an_error_instead_of_raising(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = pathlib.Path(temp_dir) / "topic-card-broken.json"
+            path.write_text("{broken", encoding="utf-8")
+            errors = validator._validate_file(path)
+        self.assertEqual(errors, ["invalid JSON"])
+
+    def test_json_with_non_object_top_level_returns_validation_error(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = pathlib.Path(temp_dir) / "business-profile-broken.json"
+            path.write_text(json.dumps([]), encoding="utf-8")
+            errors = validator._validate_file(path)
+        self.assertEqual(errors, ["business profile must be an object"])
+
+    def test_committed_topic_sources_do_not_use_reserved_example_domains(self):
+        reserved_hosts = {"example.com", "example.net", "example.org"}
+        for path in sorted((ROOT / "examples").glob("topic-card-*.json")):
+            with self.subTest(path=path.name):
+                card = json.loads(path.read_text(encoding="utf-8"))
+                hosts = {urlsplit(source["url"]).hostname for source in card["sources"]}
+                self.assertTrue(hosts.isdisjoint(reserved_hosts))
 
 
 if __name__ == "__main__":

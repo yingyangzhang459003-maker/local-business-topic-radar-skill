@@ -5,17 +5,17 @@
   "city": "肇庆",
   "district": "端州",
   "industry": "家庭餐饮",
-  "title": "肇庆暑期夜间活动增多，家庭聚餐选店先看这三项",
-  "hot_event": "肇庆公布暑期夜间文旅活动安排",
+  "title": "肇庆暑期夜游场景增加，家庭聚餐选店先核对这三项",
+  "hot_event": "权威媒体报道肇庆2026年暑期推出百余项文旅活动，并提到端州区文化活动及夜间演艺、创意市集、特色美食街区等业态",
   "sources": [{
-    "title": "肇庆暑期夜间文旅活动安排（示例）",
-    "url": "https://example.com/zhaoqing-night-events",
-    "published_at": "2026-07-16"
+    "title": "【肇庆】肇庆发出夏日邀约：全城联票享优惠，百项活动等你来",
+    "url": "https://gdio.southcn.com/node_31e7ebdad8/ebdd26f393.shtml",
+    "published_at": "2026-06-17"
   }],
-  "why_local_people_care": "夜间出行和家庭聚餐需求在活动期间增加",
+  "why_local_people_care": "暑期活动为端州家庭带来更多夜间出行与就餐场景，具体客流仍需门店自行核验",
   "target_customer": "端州家庭聚餐顾客",
   "customer_pain_point": "活动期间选店容易只看距离，忽略食材、等位和儿童需求",
-  "business_connection": "餐厅可公开选店判断标准和自身服务流程",
+  "business_connection": "餐厅可公开家庭聚餐的食材、等位和儿童需求核对清单，并如实说明自身服务流程",
   "search_keywords": ["肇庆家庭聚餐", "端州夜间活动", "端州餐厅"],
   "writing_angle": "以活动后的家庭聚餐决策清单切入",
   "recommended_cta": "收藏清单并提前预约",
@@ -23,13 +23,17 @@
   "score": {
     "local_relevance": 19,
     "industry_relevance": 18,
-    "timeliness": 13,
-    "customer_demand": 13,
+    "timeliness": 12,
+    "customer_demand": 11,
     "search_value": 8,
     "conversion_value": 8,
-    "source_reliability": 5,
+    "source_reliability": 4,
     "compliance_safety": 5,
-    "total": 89
+    "total": 85
   },
-  "risk_notes": ["活动与餐厅均为虚构示例，不得当作真实经营信息发布"]
+  "risk_notes": [
+    "商家名称及经营信息均为虚构示例，不得当作真实商家信息发布",
+    "活动安排来自权威媒体对肇庆暑期文旅发布会的报道，并非活动主办方页面；具体场次需发布前向主办方核验",
+    "不得把全市夜间文旅安排描述成某一家餐厅的客流保证"
+  ]
 }

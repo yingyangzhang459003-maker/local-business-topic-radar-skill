@@ -7,7 +7,7 @@ description: Use when a user needs current local content topics for a city-based
 
 ## Purpose
 
-Find ten timely, verifiable topics that local customers care about and that connect naturally to the merchant's industry. Stop at topic cards; do not write full articles.
+Find up to ten timely, verifiable topics that local customers care about and that connect naturally to the merchant's industry. Stop at topic cards; do not write full articles.
 
 ## Required input
 
@@ -31,7 +31,7 @@ Score every surviving candidate with `references/scoring-model.md`. Exclude tota
 
 ## Output contract
 
-Return exactly ten ranked Topic Card Contract v1 cards using `references/output-template.md`. Each card must include dated sources, local relevance, customer pain, a natural business connection, keywords, writing angle, CTA, validity window, score breakdown, and risk notes. Write every source as a separate object with its direct URL repeated in the `url` field; never use the Chinese shorthand U+540C U+4E0A ("same as above"), the English phrase "same as above", or a linked title in place of that field.
+Provide exactly ten numbered Topic Cards only when ten candidates qualify. If fewer than ten qualify under the stop conditions, provide the actual qualified count and never pad the list with weak topics. Rank the qualifying Topic Card Contract v1 cards using `references/output-template.md`. Each card must include dated sources, local relevance, customer pain, a natural business connection, keywords, writing angle, CTA, validity window, score breakdown, and risk notes. Write every source as a separate object with its direct URL repeated in the `url` field; never use the Chinese shorthand U+540C U+4E0A ("same as above"), the English phrase "same as above", or a linked title in place of that field.
 
 Read `references/topic-card-contract.md` before emitting or validating cards.
 

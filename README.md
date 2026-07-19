@@ -1,6 +1,6 @@
 # Local Business Topic Radar Skill
 
-Finds ten verified local content opportunities for a city-based business.
+Finds up to ten qualified, verified local content opportunities for a city-based business.
 
 ## What it does
 

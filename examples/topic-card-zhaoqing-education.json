@@ -5,31 +5,35 @@
   "city": "肇庆",
   "district": "端州",
   "industry": "教育培训",
-  "title": "肇庆暑期公共活动增加，初中家庭如何安排学习节奏",
-  "hot_event": "肇庆公布暑期公共文化活动安排",
+  "title": "肇庆暑假公益托管开放报名，升初中家庭怎样先排好假期时间",
+  "hot_event": "肇庆市青少年宫发布2026年暑假爱心托管班报名信息，四期服务覆盖小学1—6年级；报名和录取状态需实时核验",
   "sources": [{
-    "title": "肇庆暑期公共文化活动安排（示例）",
-    "url": "https://example.com/zhaoqing-summer",
-    "published_at": "2026-07-16"
+    "title": "共青团·伙伴计划｜肇庆市青少年宫公益托管班开始报名啦！名额有限，速抢！",
+    "url": "https://static.nfnews.com/content/202607/09/c12610040.html",
+    "published_at": "2026-07-09"
   }],
-  "why_local_people_care": "家庭需要协调活动、出行与学习安排",
-  "target_customer": "肇庆初中生家长",
-  "customer_pain_point": "暑期安排容易失衡",
-  "business_connection": "机构可提供时间规划方法，不承诺效果",
-  "search_keywords": ["肇庆暑期活动", "初中暑假规划"],
-  "writing_angle": "从家庭时间管理切入",
+  "why_local_people_care": "公益托管直接回应部分小学家庭的暑期看护和时间安排问题，也为升初中家庭提供规划假期节奏的本地参考",
+  "target_customer": "肇庆小学六年级及升初中家庭",
+  "customer_pain_point": "托管、接送、休息和自主学习时间容易互相冲突",
+  "business_connection": "机构可提供不带报名代办或录取承诺的家庭时间规划清单",
+  "search_keywords": ["肇庆暑假公益托管", "肇庆升初中暑假规划"],
+  "writing_angle": "明确托管对象边界，再从家庭时间管理切入",
   "recommended_cta": "收藏规划清单",
-  "valid_until": "2026-07-23",
+  "valid_until": "2026-07-20",
   "score": {
     "local_relevance": 18,
-    "industry_relevance": 18,
+    "industry_relevance": 16,
     "timeliness": 13,
-    "customer_demand": 12,
+    "customer_demand": 13,
     "search_value": 8,
-    "conversion_value": 8,
-    "source_reliability": 5,
+    "conversion_value": 7,
+    "source_reliability": 4,
     "compliance_safety": 5,
-    "total": 87
+    "total": 84
   },
-  "risk_notes": []
+  "risk_notes": [
+    "公益托管招生对象为小学1—6年级，不能宣称面向全部初中生",
+    "名额、报名和录取状态可能变化，发布前需回到来源页面或向主办方复核",
+    "来源由肇庆共青团在南方+发布并注明信息来自肇庆市青少年宫，属于权威转发而非独立政府公告页"
+  ]
 }
